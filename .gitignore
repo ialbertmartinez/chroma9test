@@ -1,2 +1,6 @@
 #Ignore this file. It contains secret keys
 config.js
+node_modules
+dist
+.parcel-cache
+.env

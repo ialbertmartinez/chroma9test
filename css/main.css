@@ -1,0 +1,153 @@
+body {
+   background: radial-gradient(#f5f2ed, #d2cec7);
+   min-height: 100Vh;
+}
+
+body, p{
+   font-family: "Barlow", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+}
+main {
+   max-width: 90%;
+   padding: 30px;
+}
+
+#form-container {
+   min-width: 100%;
+   display: flex;
+   flex-direction: row;
+   padding: 30px;
+}
+
+label { margin-left: 12px; }
+
+h1 {
+   font-family: "Barlow", sans-serif;
+   font-weight: 900;
+   font-style: normal;
+}
+
+#page-name {
+   font-size: 56x;
+}
+
+input,
+select,
+#zip,
+#mode {
+   background: transparent;
+   border-bottom: 1px solid rgb(50, 50, 50);
+   /* box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5); */
+   max-height: 100%;
+   min-height: 80px;
+   /* line-height: 2; */
+   font-size: 16px;
+}
+
+label {
+   font-family: barlow;
+   font-weight: 600;
+}
+
+.message {
+   display: none;
+}
+.message.error,
+.message.success,
+.message.info {
+   display: block;
+}
+
+.message.error {
+   color:#d32916;
+}
+
+.message.success {
+   color:#0db80d;
+}
+
+.message.info {
+   color:#1e90ff;
+}
+
+/* 
+#palette {
+   display: grid; */
+   /* grid-template-columns: repeat(5, minmax(20%, 1fr)); */
+
+/* } */
+
+.swatch {
+   box-sizing: border-box;
+   line-height: 2;
+   font-size: 1rem;
+   margin-inline: 10px;
+}
+
+#info-display {
+   display:none;
+   background: transparent;
+   color: #ff0000;
+   line-height: 0;
+   max-width: 0;
+   padding-inline: 0px;
+   margin-left: 20px;
+   border-radius: 8px;
+   text-shadow: 0 0 8px darkred;
+   transition: all .4s ease-in-out;
+}
+
+#info-display.error {
+   display: block;
+   background: #ef2d2d;
+   color: #fff;
+   line-height: 3;
+   max-width: fit-content;
+   padding-inline: 33px;
+   margin-left: 20px;
+   border-radius: 8px;
+   text-shadow: 0 0 8px darkred;
+   transition: all .4s ease-in-out; 
+}
+
+footer {
+      background: #1b1b1b;
+      min-width: 100%;
+      position: fixed;
+      bottom: 0;
+}
+
+footer a,
+footer a:link {
+   text-decoration: none;
+   color: #ff950c;
+}
+
+footer a:hover,
+footer a:active {
+   color: #ffa631;
+}
+
+
+@media all and (min-width: 768px)
+{
+   #get-colors-btn {
+      max-width: 25%;
+      margin-left: 10px;
+   }
+   #palette {
+      display: flex;
+      flex-flow: column nowrap;
+   }
+}
+/* }
+@media screen and (max-width: 600px) {
+   #main {
+      padding-inline: 16px;
+   }
+   #palette {
+      display: flex;
+      flex-flow: column nowrap;
+   }
+} */

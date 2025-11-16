@@ -1,44 +1,123 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title>Bootstrap demo</title>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-   <link href="./css/main.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chroma Cast | Albert Martinez</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,900;1,400&display=swap"
+		rel="stylesheet">
+	<link href="./css/main.css" rel="stylesheet">
+	<!-- <style>
+      
+   </style> -->
 </head>
-<body class="bg-primary-subtle">
-   <header class="container text-center my-5">
-      <h1 class="h1 display-1">Weather Thy Palette</h1>
-   </header>
 
-   <main class="container text-center w-50">
-      <div class="input-wrapper d-flex flex-column row-gap-3">
-         <p>This app draws inspiration from the weather. To use, enter a zipcode, tap the button, voila. A weather
-            inspired color palette for your color-lust. Enjoy!</p>
-         <input type="number" class="form-control .form-control-lg " id="zip" placeholder="Enter a zipcode">
-         <button type="button" class="btn btn-primary btn-lg my-3">Get palette</button>
-      </div>
+<body>
+	<header class="container text-center my-5">
+		<div class="row">
+			<h1 id="page-name" class="col">CHROMA CAST</h1>
+		</div>
+		<div class="row">
+			<p class="col text-body-secondary">Enter a city to get a color palette based on its current weather.</p>
+		</div>
+	</header>
 
-      <div class="row g-5 align-items-center">
-         <div id="swatch1" class="col-auto swatch"></div>
-         <div id="swatch2" class="col-auto swatch"></div>
-         <div id="swatch3" class="col-auto swatch"></div>
-         <div id="swatch4" class="col-auto swatch"></div>
-         <div id="swatch5" class="col-auto swatch"></div>
-      </div>
+	<main id="main" class="container mx-auto">
+		<div id="form-container" class="row gap-0 row-gap-5 gap-md-1">
+			<!-- zip code input	 -->
+			<div class="col-md row-md-4 form-floating">
+				<input type="text" class="form-control form-control-lg" id="zip" placeholder="Enter Zip code">
+				<label for="zip" class="form-label">Zip Code</label>
+			</div> <!--  ./ zip floating div  -->
+	
+			<div class="col-md row-md-4 form-floating">
+				<!-- 	 select	 -->
+				<select name="mode" id="mode" class="form-select form-select-lg" placehoder="Color Mode">
+					<option selected>Select color mode</option>
+					<option value="monochrome">monochrome</option>
+					<option value="monochrome-dark">monochrome-dark</option>
+					<option value="monochrome-light">monochrome-light</option>
+					<option value="analogic">analogic</option>
+					<option value="complement">complement</option>
+					<option value="analogic-complement">analogic-complement</option>
+					<option value="triad">triad</option>
+					<option value="quad">quad</option>
+				</select>
+				<label for="mode" class="form-label">Color Mode</label>
+			</div><!-- ./ mode floating	div -->
+			<button id="get-colors-btn" type="button" class="btn btn-primary btn-lg">
+				Get Colors
+			</button>
+		</div> <!-- ./ end of parent div -->
+	<!-- <main id="main" class="container text-center">
+		<div id="form-container" class="row justify-content-evenly" autofocus>
+			
+			<div class="col-sm-4 form-floating mb-3">
+				<input type="text" class="form-control" id="zip" placeholder="Zip Code">
+				<label for="zip">Zip Code</label>
+			</div>
+			
+			<div class="col-sm-4 mb-3 form-floating">
+				<select class="form-select mb-3" name="mode" id="mode" aria-label="Color Mode selection">
+					<option selected>Select a color mode</option>
+					<option value="monochrome">monochrome</option>
+					<option value="monochrome-dark">monochrome-dark</option>
+					<option value="monochrome-light">monochrome-light</option>
+					<option value="analogic">analogic</option>
+					<option value="complement">complement</option>
+					<option value="analogic-complement">analogic-complement</option>
+					<option value="triad">triad</option>
+					<option value="quad">quad</option>
+				</select>
+				<label for="mode">Color Mode</label>
 
-   </main>
+			</div>
+			
+			< !-- <div class="col-sm-4 d-flex"> -- >
+				<button id="get-colors-btn" type="button" class="btn btn-primary btn-lg col-sm-4 align-self-center">
+					Get palette
+				</button>
+			< !-- </div> -- > 
+		</div> -->
+		<div class="col-sm">
+			<p id="info-display" class="p2 my-3 message"></p>
+		</div>
+		<div id="palette" class="row text-center justify-content-between my-5">
+			<div id="swatch0" class="col-sm swatch py-2"></div>
+			<div id="swatch1" class="col-sm swatch py-2 mx-2"></div>
+			<div id="swatch2" class="col-sm swatch py-2"></div>
+			<div id="swatch3" class="col-sm swatch py-2 mx-2"></div>
+			<div id="swatch4" class="col-sm swatch py-2"></div>
+		</div>
+		<div id="color-cards" class="row justify-content-between"></div>
+	</main>
 
-   <footer class="container text-center mt-5 pb-5">
-      <p>©2025 <a href="https://ialbertmartinez.com">Albert Martinez</a></p>
-   </footer>
+	<footer class="sticky-sm-bottom container text-center mt-5 p-3 text-white">
+		<!-- <figure>
+         <blockquote class="blockquote">
+            <p>Hello everyone, I hope you find this app as interesting and weird as that is exactly what it is meant to be. This app
+            was made with lots of love, 2 hands, and a keyboard. Intended to be used for anything your creative minds can think of.
+            Be it a palette for a new project, as a creative prompt, a spiritual guide, the colors for your next kids room, or kids
+            bday party theme, or just to pull a color because you lust for color. Whatever, I don't judge. Go wild, hit the button 2x, who cares. Just enter a zip code everytime or it won't work... AND...<br /> <em>always remember to bring color into your world.</em></p>
+         </blockquote>
+         <figcaption class="blockquote-footer">
+            —— Albert <cite title="A Note from the Developer">A little note from the developer</cite>
+         </figcaption>
+      </figure> -->
+		<p>©2025 <a href="https://ialbertmartinez.com">Albert Martinez</a></p>
+	</footer>
 
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"></script>
-      <script src="./config.js"></script>
-      <script src="./js/main.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+		crossorigin="anonymous"></script>
+	<script src="./config.js" defer></script>
+	<script src="./js/colors .js"></script>
+	<script src="./js/main.js" defer></script>
 </body>
+
 </html>
