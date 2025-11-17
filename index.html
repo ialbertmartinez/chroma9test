@@ -18,7 +18,8 @@
 </head>
 
 <body>
-	<header class="container text-center my-5">
+	<div class="wrapper">
+	<header class="container text-center mt-sm-3 mt-lg-5">
 		<div class="row">
 			<h1 id="page-name" class="col">CHROMA CAST</h1>
 		</div>
@@ -28,7 +29,7 @@
 	</header>
 
 	<main id="main" class="container mx-auto">
-		<div id="form-container" class="row gap-0 row-gap-5 gap-md-1">
+		<div id="form-container" class="row row-gap-4">
 			<!-- zip code input	 -->
 			<div class="col-md row-md-4 form-floating">
 				<input type="text" class="form-control form-control-lg" id="zip" placeholder="Enter Zip code">
@@ -54,50 +55,21 @@
 				Get Colors
 			</button>
 		</div> <!-- ./ end of parent div -->
-	<!-- <main id="main" class="container text-center">
-		<div id="form-container" class="row justify-content-evenly" autofocus>
-			
-			<div class="col-sm-4 form-floating mb-3">
-				<input type="text" class="form-control" id="zip" placeholder="Zip Code">
-				<label for="zip">Zip Code</label>
-			</div>
-			
-			<div class="col-sm-4 mb-3 form-floating">
-				<select class="form-select mb-3" name="mode" id="mode" aria-label="Color Mode selection">
-					<option selected>Select a color mode</option>
-					<option value="monochrome">monochrome</option>
-					<option value="monochrome-dark">monochrome-dark</option>
-					<option value="monochrome-light">monochrome-light</option>
-					<option value="analogic">analogic</option>
-					<option value="complement">complement</option>
-					<option value="analogic-complement">analogic-complement</option>
-					<option value="triad">triad</option>
-					<option value="quad">quad</option>
-				</select>
-				<label for="mode">Color Mode</label>
 
-			</div>
-			
-			< !-- <div class="col-sm-4 d-flex"> -- >
-				<button id="get-colors-btn" type="button" class="btn btn-primary btn-lg col-sm-4 align-self-center">
-					Get palette
-				</button>
-			< !-- </div> -- > 
-		</div> -->
 		<div class="col-sm">
-			<p id="info-display" class="p2 my-3 message"></p>
+			<p id="info-display" class="message"></p>
 		</div>
-		<div id="palette" class="row text-center justify-content-between my-5">
-			<div id="swatch0" class="col-sm swatch py-2"></div>
-			<div id="swatch1" class="col-sm swatch py-2 mx-2"></div>
+		<div id="palette" class="row text-center justify-content-evenly my-5">
+			<div id="swatch0" class="col-sm swatch rounded-top-3 py-2"></div>
+			<div id="swatch1" class="col-sm swatch py-2"></div>
 			<div id="swatch2" class="col-sm swatch py-2"></div>
-			<div id="swatch3" class="col-sm swatch py-2 mx-2"></div>
-			<div id="swatch4" class="col-sm swatch py-2"></div>
+			<div id="swatch3" class="col-sm swatch py-2"></div>
+			<div id="swatch4" class="col-sm swatch rounded-bottom-3 py-2"></div>
 		</div>
 		<div id="color-cards" class="row justify-content-between"></div>
 	</main>
 
-	<footer class="sticky-sm-bottom container text-center mt-5 p-3 text-white">
+	<footer id="footer" class="sticky-sm-bottom container text-center mt-5 p-3 text-white">
 		<!-- <figure>
          <blockquote class="blockquote">
             <p>Hello everyone, I hope you find this app as interesting and weird as that is exactly what it is meant to be. This app
@@ -111,12 +83,12 @@
       </figure> -->
 		<p>©2025 <a href="https://ialbertmartinez.com">Albert Martinez</a></p>
 	</footer>
-
+</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 		crossorigin="anonymous"></script>
 	<script src="./config.js" defer></script>
-	<script src="./js/colors .js"></script>
+	<script src="./js/colors.js"></script>
 	<script src="./js/main.js" defer></script>
 </body>
 

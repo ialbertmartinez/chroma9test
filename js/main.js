@@ -22,7 +22,7 @@ async function fetchData(e) {
    modeSelectEl.selectedIndex = 0; // select reset
    
    
-   let url = `https://api.openweathermap.org/data/2.5/weather?zip=${uZip}&units=${units}&appid=${apiKey}`; // build endpoint url for api call
+   let url = `https://api.openweathermap.org/data/2.5/weather?zip=${uZip},us&units=${units}&appid=${apiKey}`; // build endpoint url for api call
    try {
       // OPENWEATHER API CALL
       let weatherResponse = await fetch(url); 
@@ -31,7 +31,7 @@ async function fetchData(e) {
      
       // console.log("weatherData: ", weatherData);
       let weatherCondition = weatherData.weather[0].main;
-
+      console.log(weatherData);
       let swatch = getColor(weatherCondition).replace('#', '');
       let colorUrl = `https://www.thecolorapi.com/scheme?hex=${swatch}&mode=${mode}&count=5`;
 
@@ -39,7 +39,7 @@ async function fetchData(e) {
       let colorResponse = await fetch(colorUrl);
       if(!colorResponse.ok) { throw new Error(colorResponse.status);}
       let colorData = await colorResponse.json();
-      
+      weatherData.mode = mode;
       // console.log("colorData: ", colorData);
       // console.log('Weather Condition:', weatherCondition);
       // console.log('Swatch Color: ', swatch);
@@ -86,20 +86,10 @@ function getColor(condition) {
   
 
 function displayWeather(weatherData){
-   // const weatherDisplay = document.getElementById('weather-display');
-   // let tempUnit = "\u00B0F";
    let name = weatherData.name;
-   // let temp = weatherData.main.temp;
    let description = weatherData.weather[0].description;
-   // let currentTemp = `${temp}${tempUnit}`;
-   // let iconUrl = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
 
-   // let imgEl = document.createElement('img');
-   // imgEl.src = iconUrl;
-   // let forecast = `${modeSelectEl.value}color palette for ${name}  ${description} - ${currentTemp}:`
-
-   // weatherDisplay.textContent = forecast;
-   displayMessage(`Showing palette for: ${description} in ${name}`);
+   displayMessage(`Showing ${weatherData.mode} palette for: ${description} in ${name}`, "success");
    // weatherDisplay.appendChild(imgEl);
 }
 
@@ -113,10 +103,8 @@ function displayPalette(colorData) {
       swatchDiv.style.background = colorData.colors[i].hex.value;
       swatchDiv.style.color = colorData.colors[i].contrast.value;
       
-      let colorImgUrl = colorData.colors[i].image.named;
       let divEl = document.createElement("div"); // card el
       let ulEl = document.createElement('ul'); // ul element
-      let imgEl = document.createElement('img');
       
       let colorProp1 = document.createElement("li");
       let colorProp2 = document.createElement("li");
@@ -125,46 +113,46 @@ function displayPalette(colorData) {
       let colorProp5 = document.createElement("li");
       
       // card
-      divEl.classList.add("col-sm", "card", "mx-1");
-      divEl.style.width = "19%";
+      divEl.classList.add("col-sm", "card", "mb-3", "color-card");
       divEl.id = `color${i}`;
       divEl.style.background = colorData.colors[i].hex.value;
       divEl.style.color = colorData.colors[i].contrast.value;
-      
-      // card-img
-      imgEl.src = colorImgUrl;
-      imgEl.alt = `image of ${colorData.colors[i].name.value}`;
-      imgEl.classList.add("card-img-top");
-      divEl.appendChild(imgEl);
 
       // list-group
+      ulEl.id = "color-card-prop-list";
       ulEl.classList.add("list-group", "list-group-flush", "text-start");
+      ulEl.style.color = colorData.colors[i].contrast.value;
       
       // card-list-group-items
       // NAME
       colorProp1.id = `color${i}-prop1`;
-      colorProp1.classList.add("list-group-item");
-      colorProp1.innerHTML = `<p><strong>name:</strong> ${colorData.colors[i].name.value}</p>`
+      colorProp1.style.color = colorData.colors[i].contrast.value;
+      colorProp1.classList.add("list-group-item", "color-card-prop");
+      colorProp1.innerHTML = `<h3>${colorData.colors[i].name.value}</h3>`
       
       // RGB
       colorProp2.id = `color${i}-prop2`;
-      colorProp2.classList.add("list-group-item");
-      colorProp2.innerHTML = `<p><strong>rgb:</strong> ${colorData.colors[i].rgb.value}</p>`
+      colorProp2.style.color = colorData.colors[i].contrast.value;
+      colorProp2.classList.add("list-group-item", "color-card-prop");
+      colorProp2.innerHTML = `<p><span class="color-card-prop-name">rgb:</span> ${colorData.colors[i].rgb.value}</p>`
       
       // CMYK
       colorProp3.id = `color${i}-prop3`;
-      colorProp3.classList.add("list-group-item");
-      colorProp3.innerHTML = `<p><strong>cmyk:</strong> ${colorData.colors[i].cmyk.value}</p>`
+      colorProp3.style.color = colorData.colors[i].contrast.value;
+      colorProp3.classList.add("list-group-item", "color-card-prop");
+      colorProp3.innerHTML = `<p><span class="color-card-prop-name">cmyk:</span> ${colorData.colors[i].cmyk.value}</p>`
       
       // HEX
       colorProp4.id = `color${i}-prop4`;
-      colorProp4.classList.add("list-group-item");
-      colorProp4.innerHTML = `<p><strong>hex:</strong> ${colorData.colors[i].hex.value}</p>`
+      colorProp4.style.color = colorData.colors[i].contrast.value;
+      colorProp4.classList.add("list-group-item", "color-card-prop");
+      colorProp4.innerHTML = `<p><span class="color-card-prop-name">hex:</span> ${colorData.colors[i].hex.value}</p>`
 
       // CONTRAST
       colorProp5.id = `color${i}-prop5`;
-      colorProp5.classList.add("list-group-item");
-      colorProp5.innerHTML = `<p><strong>contrast:</strong> ${colorData.colors[i].contrast.value}</p>`
+      colorProp5.style.color = colorData.colors[i].contrast.value;
+      colorProp5.classList.add("list-group-item", "color-card-prop");
+      colorProp5.innerHTML = `<p><span class="color-card-prop-name">contrast:</span> ${colorData.colors[i].contrast.value}</p>`
 
       ulEl.appendChild(colorProp1);
       ulEl.appendChild(colorProp2);
@@ -177,8 +165,11 @@ function displayPalette(colorData) {
 }
 
 function displayMessage(message, type) {
+   infoDisplay.style.display = "block"
    infoDisplay.innerHTML = "";
    infoDisplay.textContent = message;
-   infoDisplay.className = `message ${type}`;
-   setTimeout(() => { infoDisplay.style.display = "none"; }, 5000);
+   infoDisplay.className = `message ${type} text-${type}`;
+   console.log(`${message} | ${type}`);
+   return message + " " + type;
+   // setTimeout(() => { infoDisplay.style.display = "none"; }, 5000);
 }
