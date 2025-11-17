@@ -1,29 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600&family=Barlow:wght@400;800&display=swap');
 
-
-
-/* h3, strong
+*
 {
-   font-family: "Barlow Condensed", sans-serif;
-   font-weight: 500;
-   font-style: normal;
-} */
-
-
-* {
    box-sizing: border-box;
 }
 
 html,
-body {
+body
+{
    box-sizing: border-box;
    height: 100%;
-   /* padding: 0; */
-   /* margin: 0; */
-   /* font: 1.2em sans-serif; */
 }
 
-.wrapper {
+body,
+p
+{
+   font-family: "Barlow", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+}
+
+body
+{
+   background: radial-gradient(#f5f2ed, #d2cec7);
+   min-height: 100Vh;
+}
+
+.wrapper
+{
    box-sizing: border-box;
    min-height: 100%;
 
@@ -32,7 +36,8 @@ body {
 }
 
 #header,
-#footer {
+#footer
+{
    flex-grow: 0;
    flex-shrink: 0;
 }
@@ -40,33 +45,21 @@ body {
 main
 {
    padding: 20px;
-
    flex-grow: 1;
-}
-
-body {
-   background: radial-gradient(#f5f2ed, #d2cec7);
-   min-height: 100Vh;
-}
-
-body, p{
-   font-family: "Barlow", sans-serif;
-   font-weight: 400;
-   font-style: normal;
-}
-main {
    max-width: 90%;
 }
 
-#form-container {
+#form-container
+{
    min-width: 100%;
    display: flex;
    flex-direction: row;
 }
 
-h1 {
+h1
+{
    font-family: "Barlow", sans-serif;
-   font-weight: 900;
+   font-weight: 800;
    font-style: normal;
    font-size: 56px;
 }
@@ -74,54 +67,64 @@ h1 {
 input,
 select,
 #zip,
-#mode {
-   background: transparent;
+#mode
+{
+   background: #ffffff;
    border-bottom: 1px solid #323232;
-   /* box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5); */
+   box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.3);
    max-height: 100%;
    min-height: 80px;
    font-size: 16px;
 }
 
 input,
-label {
+label
+{
    font-family: "Barlow Condensed", sans-serif;
+   font-size: 1rem;
    font-weight: 600;
    font-style: normal;
 }
 
-label {
-   font-family: "Barlow Condensed", sans-serif;
-   font-weight: 600;
+label
+{
    margin-left: 12px;
 }
-input:placeholder {
+
+input:placeholder
+{
    font-family: "Barlow Condensed", sans-serif;
    font-weight: 400;
    font-style: normal;
 }
 
-#get-colors-btn {
+#get-colors-btn
+{
    background: #ed9900;
    border-color: #cd8500;
    color: white;
-   font-family: 'barlow', sans-serif;
-   font-weight: 500;
+   font-family: "Barlow", sans-serif;
+   font-weight: 800;
    text-shadow: 0 0 3px #503400;
+   transition: all 0.4s ease-in-out;
 }
 
-#get-colors-btn:hover {
+#get-colors-btn:hover
+{
    background: #7c5100;
    border-color: #ab6f00;
+   transition: all 0.4s ease-in-out;
 }
 
-#get-colors-btn:active {
+#get-colors-btn:active
+{
    background: #ca760a;
    border-color: #be6f0a;
+   transition: all 0.4s ease-in-out;
 }
 
-#info-display {
-   display: none;
+#info-display
+{
    background: transparent;
    color: #323232;
    line-height: 2;
@@ -130,55 +133,83 @@ input:placeholder {
    margin-top: 15px;
 }
 
-.message {
+.message
+{
    display: block;
 }
 
-.message.error {
-   color:#d32916;
+.message.error
+{
+   color: #d32916;
 }
 
-.message.success {
-   color:#0db80d;
+.message.success
+{
+   color: #0db80d;
 }
 
-.message.info {
-   color:#1e90ff;
+.message.info
+{
+   color: #1e90ff;
 }
 
-.palette {
+#palette
+{
    align-items: center;
-   flex-direction: row;
-
+   flex-direction: column
 }
-.swatch {
+
+.swatch
+{
    box-sizing: border-box;
    line-height: 2;
    font-size: 1rem;
-   margin-inline: 10px;
+   margin-inline: 0;
+   box-shadow: 0 2px 3px 0 #52240097;
 }
 
-#color-cards > .color-card {
-   width: 20%;
+
+#color-cards
+{
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 50px;
+}
+
+#color-cards > .color-card
+{
    box-sizing: border-box;
    padding-inline: 8px;
+   width: 100%;
+   box-shadow: 0 2px 3px 0 #52240097;
 }
 
-#color-card-prop-list /* ul */
+.color-card-prop[id$="prop1"]
 {
-   flex-direction: column;
+   width: 100%;
 }
 
-#color-card-prop-list li { /* ul li */
+#color-card-prop-list
+{
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+
+#color-card-prop-list li
+{
+   min-width: 100%;
+   padding-block: 15px;
    background-color: transparent;
 }
 
-#color-card-prop-list li h3 /* ul li h3 */
+#color-card-prop-list li h3
 {
    width: 100%;
-   font-size: 16px;
-   font-weight: 400;
-   letter-spacing: 0.3px;
+   font-size: 18px;
+   font-family: "Barlow Condensed", sans-serif;
+   font-weight: 600;
+   font-style: normal;
+   letter-spacing: 0.5px;
 }
 
 .color-card-prop p,
@@ -190,19 +221,10 @@ input:placeholder {
    padding: 0;
 }
 
-.color-card-prop  h3
-{
-   font-family: "Barlow Condensed", sans-serif;
-   font-weight: 600;
-   font-style: normal;
-}
-
 #footer
 {
    background: #1b1b1b;
    min-width: 100%;
-   /* position: absolute; */
-   /* bottom: 0; */
 }
 
 footer a,
@@ -218,72 +240,38 @@ footer a:active
    color: #ffa631;
 }
 
-@media all and (max-width: 768px) {
-   .swatch {
-      margin-inline: 0;
-   }
-
-   #color-cards { 
-      flex-direction: column;
-      margin-bottom: 50px;
-   }
-   
-   #color-cards > .color-card {
-      width: 100%;   
-   }
-   
-   .color-card-prop[id$="prop1"] {
-      width: 100%;
-   }
-
-   #color-card-prop-list li h3 {
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: 0.5px;  
-   }
-
-   .color-card>.card-img-top {
-      display: none;
-   }
-
-   #color-card-prop-list {
-      flex-direction: row;
-      flex-wrap: wrap;
-   }
-   #color-card-prop-list li {
-      min-width: 100%;
-      padding-block: 15px;
-   }
-   
-   #palette {
-      flex-direction: column;
-   }
-}
-   
-
-@media all and (min-width: 768px) {
-   header {
+@media all and (min-width: 768px)
+{
+   header
+   {
       margin-bottom: 30px;
    }
 
-   #get-colors-btn {
+   #get-colors-btn
+   {
       max-width: 25%;
       margin-left: 10px;
    }
-   
-   #palette {
+
+   #palette
+   {
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
+      column-gap: 15px;
    }
 
-   .swatch {
+   .swatch
+   {
       border-radius: 8px;
    }
-   #color-cards {
+
+   #color-cards
+   {
+      flex-direction: row;
       column-gap: 10px;
    }
-   
+
    #color-card-prop-list li h3
    {
       font-size: 20px;
